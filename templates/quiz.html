@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quiz</title>
+</head>
+<body style="padding:20px">
+  <h2>Your Quiz</h2>
+  <form action="/submit" method="POST">
+    {% for i, q in enumerate(qs) %}
+      <p><b>Q{{ i+1 }}: {{ q.q }}</b></p>
+      {% for j, opt in enumerate(q.opts) %}
+        <label><input type="radio" name="r{{ i }}" value="{{ j }}" required> {{ opt }}</label><br>
+      {% endfor %}
+      <input type="hidden" name="a{{ i }}" value="{{ q.ans }}">
+      <hr>
+    {% endfor %}
+    <input type="hidden" name="total" value="{{ qs|length }}">
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
