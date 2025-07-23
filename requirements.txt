@@ -1,0 +1,5 @@
+flask
+werkzeug
+PyMuPDF
+python-docx
+gunicorn
